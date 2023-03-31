@@ -28,7 +28,7 @@ export const Login = (props) => {
 
   const validate=(values)=>{
     const errors={};
-   // const regex=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+    
     if(!values.email){
       errors.email=alert("Email is required")
     }
