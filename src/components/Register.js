@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import logoImg from "../images/logo.png";
-
+import { FaEye } from 'react-icons/fa';
 export const Register = (props) => {
 
 /////////////////
@@ -62,7 +62,12 @@ export const Register = (props) => {
 
     setFormError(inputError);
   };
-
+  
+    const [show,setShow]=useState(false)
+    const handleShow=()=>{
+      setShow(!show)
+    }
+  
 ///////////////////////
 
   return (
@@ -98,18 +103,20 @@ export const Register = (props) => {
         />
         <p className="error-message">{formError.email}</p>
 
-        <label htmlFor="password">Password</label>
+        <label onClick={handleShow} htmlFor="password">Password {show?"Hide":"Show"} </label>
         <input
           className="form-control"
           value={formInput.password}
               onChange={({ target }) => {
                 handleUserInput(target.name, target.value);
               }}
-          type="password"
+          type={show?"text":"password"}
           placeholder="********"
           id="password"
           name="password"
+          
         />
+        <button onClick={handleShow}><FaEye size= {24}/></button>
         <p className="error-message">{formError.password}</p>
 
 

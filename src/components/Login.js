@@ -1,11 +1,17 @@
 import React, { useState,useEffect } from "react";
 import logoImg from "../images/logo.png";
+import { FaEye } from 'react-icons/fa';
 
 export const Login = (props) => {
   const initialValues = { email: "", password: "" };
   const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit]=useState(false);
+
+  const [show,setShow]=useState(false)
+  const handleShow=()=>{
+    setShow(!show)
+  }
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -28,7 +34,7 @@ export const Login = (props) => {
 
   const validate=(values)=>{
     const errors={};
-    
+
     if(!values.email){
       errors.email=alert("Email is required")
     }
@@ -39,6 +45,8 @@ export const Login = (props) => {
       errors.password=alert("Password must be of more than 4 characters");
     }
     return errors;
+    
+    
   }
   
   return (
@@ -59,20 +67,23 @@ export const Login = (props) => {
           id="email"
         />
         <p>{formErrors.email}</p>
-
-        <label htmlFor="password">Password</label>
+        
+        <label  htmlFor="password">Password</label>
         <input
           className="form-control"
           value={formValues.password}
           onChange={handleChange}
-          type="password"
+          type={show?"text":"password"}
           placeholder="********"
           id="password"
           name="password"
         />
+        <button type='submit' className='flex flex-c' onClick={handleShow}>
+                <FaEye className='text-purple' size= {24}/>
+        </button>
         <p>{formErrors.password}</p>
 
-        <button class="btn btn-primary" type="submit">
+        <button className="btn btn-primary" type="submit">
           Log In
         </button>
 
