@@ -1,16 +1,19 @@
 import React, { useState,useEffect } from "react";
 import logoImg from "../images/logo.png";
-import { FaEye } from 'react-icons/fa';
+import { FaEye, FaEyeSlash} from 'react-icons/fa';
+// import Navbar from "./Navbar"
 
 export const Login = (props) => {
   const initialValues = { email: "", password: "" };
   const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit]=useState(false);
+  const [icon,setIcon]=useState(<FaEye size={24} />);
 
   const [show,setShow]=useState(false)
   const handleShow=()=>{
-    setShow(!show)
+    setShow(!show);
+    setIcon(show? <FaEye size={24} />:<FaEyeSlash size={24} />);
   }
 
   const handleChange = (e) => {
@@ -31,6 +34,7 @@ export const Login = (props) => {
       console.log(formErrors);
     }
   },[formErrors])
+  console.log(formValues);
 
   const validate=(values)=>{
     const errors={};
@@ -47,10 +51,14 @@ export const Login = (props) => {
     return errors;
     
     
+    
   }
   
   return (
+    <>
+    
     <div className="auth-form-container"> 
+  
       <form className="login-form" onSubmit={handleSubmit}>
         <img src={logoImg} className="image1" alt="logo" />
         <h4 className="heading1">Sign In</h4>
@@ -68,7 +76,9 @@ export const Login = (props) => {
         />
         <p>{formErrors.email}</p>
         
-        <label  htmlFor="password">Password</label>
+        <label  htmlFor="password">Enter Password</label>
+        <div className="password-input">
+
         <input
           className="form-control"
           value={formValues.password}
@@ -77,10 +87,12 @@ export const Login = (props) => {
           placeholder="********"
           id="password"
           name="password"
-        />
-        <button type='submit' className='flex flex-c' onClick={handleShow}>
-                <FaEye className='text-purple' size= {24}/>
+          />
+           <button className="password-toggle" onClick={handleShow}>
+          {icon}
         </button>
+
+          </div>
         <p>{formErrors.password}</p>
 
         <button className="btn btn-primary" type="submit">
@@ -98,6 +110,8 @@ export const Login = (props) => {
           Need an account?
         </button>
       </form>
+       
     </div>
+    </>
   );
 };

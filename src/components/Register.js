@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 
 import logoImg from "../images/logo.png";
-import { FaEye } from 'react-icons/fa';
+import { FaEye,FaEyeSlash } from "react-icons/fa";
+// import Navbar from "./Navbar";
 export const Register = (props) => {
-
-/////////////////
+  /////////////////
   const [formInput, setFormInput] = useState({
     username: "",
     email: "",
@@ -40,9 +40,8 @@ export const Register = (props) => {
         email: "Enter valid email address",
         password: "Password should not be empty",
       });
-      return
+      return;
     }
-
 
     if (formInput.confirmPassword !== formInput.password) {
       setFormError({
@@ -57,21 +56,37 @@ export const Register = (props) => {
         ...inputError,
         password: alert("Password should not be empty"),
       });
-      return
+      return;
     }
 
     setFormError(inputError);
+    
+  };
+
+  const [show, setShow] = useState(false);
+  const [icon,setIcon]=useState(<FaEye size={24} />);
+
+    const handleKeyDown=(e)=>{
+      if(e.key==="Enter"){
+        e.preventDefault();
+      }
+    };
+
+  const handleShow = () => {
+    if(!show&&document.activeElement.id==="password"){
+      document.getElementById("password").blur();
+    }
+    setShow(!show);
+    setIcon(show? <FaEye size={24} />:<FaEyeSlash size={24} />);
+ 
   };
   
-    const [show,setShow]=useState(false)
-    const handleShow=()=>{
-      setShow(!show)
-    }
-  
-///////////////////////
+  ///////////////////////
 
   return (
+    <>
     <div className="auth-form-container">
+      
       <form className="register-form" onSubmit={validateFormInput}>
         <img src={logoImg} className="image1" alt="logo" />
         <label htmlFor="username">Full Name:</label>
@@ -80,7 +95,7 @@ export const Register = (props) => {
           value={formInput.username}
           onChange={({ target }) => {
             handleUserInput(target.name, target.value);
-          }}  
+          }}
           type="text"
           placeholder="Enter Name"
           id="username"
@@ -91,49 +106,51 @@ export const Register = (props) => {
         <label htmlFor="email">E-mail</label>
         <input
           className="form-control"
-       
-        value={formInput.email}
-        onChange={({ target }) => {
-          handleUserInput(target.name, target.value);
-        }}  
-        type="email"
+          value={formInput.email}
+          onChange={({ target }) => {
+            handleUserInput(target.name, target.value);
+          }}
+          type="email"
           placeholder="xyz@xyz.com"
           id="email"
           name="email"
         />
         <p className="error-message">{formError.email}</p>
 
-        <label onClick={handleShow} htmlFor="password">Password {show?"Hide":"Show"} </label>
+        <label htmlFor="password">Enter Password </label>
+        <div className="password-input">
         <input
           className="form-control"
           value={formInput.password}
-              onChange={({ target }) => {
-                handleUserInput(target.name, target.value);
-              }}
-          type={show?"text":"password"}
+          onChange={({ target }) => {
+            handleUserInput(target.name, target.value);
+          }}
+          type={show ? "text" : "password"}
           placeholder="********"
           id="password"
           name="password"
-          
+          onKeyDown={handleKeyDown}
+            
         />
-        <button onClick={handleShow}><FaEye size= {24}/></button>
+       <button className="password-toggle" onClick={handleShow}>
+          {icon}
+        </button>
+        </div>
         <p className="error-message">{formError.password}</p>
-
-
+        
         <label htmlFor="password">Re-enter password</label>
         <input
           className="form-control"
           value={formInput.confirmPassword}
-              onChange={({ target }) => {
-                handleUserInput(target.name, target.value);
-              }}
+          onChange={({ target }) => {
+            handleUserInput(target.name, target.value);
+          }}
           type="password"
           placeholder="********"
           id="confirmPassword"
           name="confirmPassword"
         />
         <p className="error-message">{formError.confirmPassword}</p>
-
         <button class="btn btn-primary" type="submit">
           Create Account
         </button>
@@ -143,8 +160,10 @@ export const Register = (props) => {
           class="btn btn-link"
         >
           Already have an accout? Login here
-        </button>{" "}
+        </button>
       </form>
+      
     </div>
+    </>
   );
 };

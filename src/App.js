@@ -4,6 +4,7 @@ import './App.css';
 import {Login} from "./components/Login";
 import {Register} from "./components/Register";
 
+
 function App() {
   const [currentForm, setCurrentForm]=useState("login");
 
@@ -16,8 +17,7 @@ function App() {
       {
         currentForm === 'login'? <Login onFormSwitch={toggleForm}/> : <Register onFormSwitch={toggleForm}/>
       }
-      
-    
+
     </div>
   );
 }
