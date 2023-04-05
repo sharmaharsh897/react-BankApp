@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-
 import logoImg from "../images/logo.png";
-import { FaEye,FaEyeSlash } from "react-icons/fa";
-// import Navbar from "./Navbar";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { Link } from "react-router-dom";
+
 export const Register = (props) => {
   /////////////////
   const [formInput, setFormInput] = useState({
@@ -60,110 +60,106 @@ export const Register = (props) => {
     }
 
     setFormError(inputError);
-    
   };
 
   const [show, setShow] = useState(false);
-  const [icon,setIcon]=useState(<FaEye size={24} />);
+  const [icon, setIcon] = useState(<FaEye size={24} />);
 
-    const handleKeyDown=(e)=>{
-      if(e.key==="Enter"){
-        e.preventDefault();
-      }
-    };
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+    }
+  };
 
   const handleShow = () => {
-    if(!show&&document.activeElement.id==="password"){
+    if (!show && document.activeElement.id === "password") {
       document.getElementById("password").blur();
     }
     setShow(!show);
-    setIcon(show? <FaEye size={24} />:<FaEyeSlash size={24} />);
- 
+    setIcon(show ? <FaEye size={24} /> : <FaEyeSlash size={24} />);
   };
-  
-  ///////////////////////
+
+  //SEND DATA TO BACKEND
+
+
 
   return (
     <>
-    <div className="auth-form-container">
-      
-      <form className="register-form" onSubmit={validateFormInput}>
-        <img src={logoImg} className="image1" alt="logo" />
-        <label htmlFor="username">Full Name:</label>
-        <input
-          className="form-control"
-          value={formInput.username}
-          onChange={({ target }) => {
-            handleUserInput(target.name, target.value);
-          }}
-          type="text"
-          placeholder="Enter Name"
-          id="username"
-          name="username"
-        />
-        <p className="error-message">{formError.username}</p>
+      <div className="auth-form-container">
+        <form className="register-form" onSubmit={validateFormInput}>
+          <img src={logoImg} className="image1" alt="logo" />
+          <label htmlFor="username">Full Name:</label>
+          <input
+            className="form-control"
+            value={formInput.username}
+            onChange={({ target }) => {
+              handleUserInput(target.name, target.value);
+            }}
+            type="text"
+            placeholder="Enter Name"
+            id="username"
+            name="username"
+          />
+          <p className="error-message">{formError.username}</p>
 
-        <label htmlFor="email">E-mail</label>
-        <input
-          className="form-control"
-          value={formInput.email}
-          onChange={({ target }) => {
-            handleUserInput(target.name, target.value);
-          }}
-          type="email"
-          placeholder="xyz@xyz.com"
-          id="email"
-          name="email"
-        />
-        <p className="error-message">{formError.email}</p>
+          <label htmlFor="email">E-mail</label>
+          <input
+            className="form-control"
+            value={formInput.email}
+            onChange={({ target }) => {
+              handleUserInput(target.name, target.value);
+            }}
+            type="email"
+            placeholder="xyz@xyz.com"
+            id="email"
+            name="email"
+          />
+          <p className="error-message">{formError.email}</p>
 
-        <label htmlFor="password">Enter Password </label>
-        <div className="password-input">
-        <input
-          className="form-control"
-          value={formInput.password}
-          onChange={({ target }) => {
-            handleUserInput(target.name, target.value);
-          }}
-          type={show ? "text" : "password"}
-          placeholder="********"
-          id="password"
-          name="password"
-          onKeyDown={handleKeyDown}
-            
-        />
-       <button className="password-toggle" onClick={handleShow}>
-          {icon}
-        </button>
-        </div>
-        <p className="error-message">{formError.password}</p>
-        
-        <label htmlFor="password">Re-enter password</label>
-        <input
-          className="form-control"
-          value={formInput.confirmPassword}
-          onChange={({ target }) => {
-            handleUserInput(target.name, target.value);
-          }}
-          type="password"
-          placeholder="********"
-          id="confirmPassword"
-          name="confirmPassword"
-        />
-        <p className="error-message">{formError.confirmPassword}</p>
-        <button class="btn btn-primary" type="submit">
-          Create Account
-        </button>
-        <button
-          type="button"
-          onClick={() => props.onFormSwitch("login")}
-          class="btn btn-link"
-        >
-          Already have an accout? Login here
-        </button>
-      </form>
-      
-    </div>
+          <label htmlFor="password">Enter Password </label>
+          <div className="password-input">
+            <input
+              className="form-control"
+              value={formInput.password}
+              onChange={({ target }) => {
+                handleUserInput(target.name, target.value);
+              }}
+              type={show ? "text" : "password"}
+              placeholder="********"
+              id="password"
+              name="password"
+              onKeyDown={handleKeyDown}
+            />
+            <button className="password-toggle" onClick={handleShow}>
+              {icon}
+            </button>
+          </div>
+          <p className="error-message">{formError.password}</p>
+
+          <label htmlFor="password">Re-enter password</label>
+          <input
+            className="form-control"
+            value={formInput.confirmPassword}
+            onChange={({ target }) => {
+              handleUserInput(target.name, target.value);
+            }}
+            type="password"
+            placeholder="********"
+            id="confirmPassword"
+            name="confirmPassword"
+          />
+          <p className="error-message">{formError.confirmPassword}</p>
+          <button class="btn btn-primary" type="submit">
+            Create Account
+          </button>
+          <button
+            type="button"
+            class="btn btn-link"
+          >
+          <Link className="linking" to="/login"> Already have an accout? Login here </Link> 
+          </button>
+        </form>
+      </div>
     </>
   );
 };

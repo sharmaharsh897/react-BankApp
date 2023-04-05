@@ -73,3 +73,7 @@ input{
   outline:none;
   cursor:pointer;
 }
+.linking{
+  text-decoration: none;
+  color:#292074
+}
