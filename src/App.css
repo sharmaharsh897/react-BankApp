@@ -63,6 +63,9 @@ input{
 .password-input{
   position:relative;
 }
+.confirm-password-input{
+  position:relative;
+}
 .password-toggle{
   position: absolute;
   top:50%;

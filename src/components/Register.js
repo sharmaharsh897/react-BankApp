@@ -63,7 +63,7 @@ export const Register = (props) => {
   };
 
   const [show, setShow] = useState(false);
-  const [icon, setIcon] = useState(<FaEye size={24} />);
+  const [icon, setIcon] = useState(<FaEye size={22} />);
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
@@ -76,8 +76,9 @@ export const Register = (props) => {
       document.getElementById("password").blur();
     }
     setShow(!show);
-    setIcon(show ? <FaEye size={24} /> : <FaEyeSlash size={24} />);
+    setIcon(show ? <FaEye size={22} /> : <FaEyeSlash size={22} />);
   };
+
 
   //SEND DATA TO BACKEND
 
@@ -136,19 +137,27 @@ export const Register = (props) => {
           </div>
           <p className="error-message">{formError.password}</p>
 
+           
           <label htmlFor="password">Re-enter password</label>
+          <div className="confirm-password-input">  
           <input
             className="form-control"
             value={formInput.confirmPassword}
             onChange={({ target }) => {
               handleUserInput(target.name, target.value);
             }}
-            type="password"
+            type={show ? "text" : "password"}
             placeholder="********"
             id="confirmPassword"
-            name="confirmPassword"
-          />
+            name="confirmPassword"  
+           // onKeyDown={handleKeyDown}
+            />
+            {/* <button className="password-toggle" onClick={handleShow}>
+              {icon}
+            </button> */}
+            </div>  
           <p className="error-message">{formError.confirmPassword}</p>
+          
           <button class="btn btn-primary" type="submit">
             Create Account
           </button>

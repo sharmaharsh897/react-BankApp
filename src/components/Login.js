@@ -15,7 +15,7 @@ export const Login = (props) => {
   const [show, setShow] = useState(false);
   const handleShow = () => {
     setShow(!show);
-    setIcon(show ? <FaEye size={24} /> : <FaEyeSlash size={24} />);
+    setIcon(show ? <FaEye size={22} /> : <FaEyeSlash size={22} />);
   };
 
   const handleChange = (e) => {
@@ -90,7 +90,7 @@ export const Login = (props) => {
           <p>{formErrors.password}</p>
 
           <button className="btn btn-primary" type="submit">
-            Log In
+           <Link to="/home"> Log In</Link>
           </button>
 
           <button type="button" class="btn btn-link">
