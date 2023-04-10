@@ -152,9 +152,7 @@ export const Register = (props) => {
             name="confirmPassword"  
            // onKeyDown={handleKeyDown}
             />
-            {/* <button className="password-toggle" onClick={handleShow}>
-              {icon}
-            </button> */}
+          
             </div>  
           <p className="error-message">{formError.confirmPassword}</p>
           

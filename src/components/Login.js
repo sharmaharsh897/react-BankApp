@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import logoImg from "../images/logo.png";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import {Link
-} from "react-router-dom";
-
+import { Link } from "react-router-dom";
 
 export const Login = (props) => {
   const initialValues = { email: "", password: "" };
@@ -90,19 +88,17 @@ export const Login = (props) => {
           <p>{formErrors.password}</p>
 
           <button className="btn btn-primary" type="submit">
-           <Link to="/home"> Log In</Link>
+            <Link to="/"> Log In</Link>
           </button>
 
           <button type="button" class="btn btn-link">
             Forgot your password?
           </button>
-          <button
-            type="button"
-           
-            class="btn btn-link"
-            
-          >
-           <Link className="linking" to="/register"> Need an account?</Link>
+          <button type="button" class="btn btn-link">
+            <Link className="linking" to="/register">
+              {" "}
+              Need an account?
+            </Link>
           </button>
         </form>
       </div>

@@ -13,83 +13,52 @@ const Navbar = () => {
 
   return (
     <>
-      {/* <nav className="navbar">
-        <div className="navbar-container">
+      <nav className="navbar navbar-top">
+        <div className="navbar-logo">
           <img src={logoImg} className="image1" alt="Logo" />
-          <div className="menu-icon" onClick={toggleMenu}>
-            
-            {showMenu ? <FaTimes /> : <FaBars />}
-          </div>
-          <ul className={showMenu ? "nav-menu active" : "nav-menu"}>
-            <li className="nav-item">
-              <Link to="/home" className="nav-link" onClick={toggleMenu}>
-                Home
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/deposit" className="nav-link" onClick={toggleMenu}>
-                Deposit
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/withdraw" className="nav-link" onClick={toggleMenu}>
-                Withdraw
-              </Link>
-            </li>
-            <li className="nav-item dropdown">
-              <a
-                href="#"
-                className="nav-link dropdown-toggle"
-                onClick={toggleMenu}
-              >
-                More
-              </a>
-              <ul className="dropdown-menu">
-                <li className="dropdown-item">
-                  <a href="#">Link 1</a>
-                </li>
-                <li className="dropdown-item">
-                  <a href="#">Link 2</a>
-                </li>
-                <li className="dropdown-item">
-                  <a href="#">Link 3</a>
-                </li>
-              </ul>
-            </li>
-          </ul>
         </div>
-      </nav> */}
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <img src={logoImg} className="image1" alt="Logo" />
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse " id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <Link
-                to="home"
-                className="nav-link text-uppercase text-dark fs-22 fw-6 ls-1"
-              >
-                Home
-              </Link>
+      </nav>
+      <nav className="navbar navbar-bottom">
+        <div className="navbar-links">
+          <ul>
+            <li>
+              <Link to="/">Services</Link>
             </li>
-            <li class="nav-item">
-            <Link
-                to="home"
-                className="nav-link text-uppercase text-dark fs-22 fw-6 ls-1"
-              >
-                ABOUT
-              </Link>
+            <li>
+              <Link to="/">Mobile Banking</Link>
+            </li>
+            <li>
+              <Link to="/">FAQ</Link>
+            </li>
+            <li>
+              <Link to="/">Corporate Website</Link>
+            </li>
+            <li>
+              <Link to="/">SBIePay Lite</Link>
+            </li>
+            <li>
+              <Link to="/">SB Collect</Link>
+            </li>
+            <li>
+              <Link to="/">Electoral Bond</Link>
+            </li>
+            <li>
+              <Link to="/">Videos</Link>
+            </li>
+            <li>
+              <Link to="/">mCash</Link>
+            </li>
+            <li>
+              <Link to="/">Apply for Sb/Current Account</Link>
+            </li>
+            <li>
+              <Link to="/">NPS</Link>
+            </li>
+            <li>
+              <Link to="/">SBI Unipay</Link>
+            </li>
+            <li>
+              <Link to="/">SBI Loans</Link>
             </li>
           </ul>
         </div>

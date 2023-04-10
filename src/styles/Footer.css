@@ -1,0 +1,30 @@
+footer{
+   
+    color: #0c3769;
+    padding: 20px;
+    position:absolute;
+    bottom: 0;
+    width: 100%;
+
+}
+.footer-links{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    list-style:inside;
+    padding: 0;
+    margin: 0;
+    
+}
+.footer-links li{
+    width: calc(25%-10px);
+    margin-bottom: 10px;
+    
+}
+.footer-links li a{
+    color: #0c3769;
+    text-decoration: none;;
+}
+.footer-links li a:hover{
+    text-decoration: underline;
+}

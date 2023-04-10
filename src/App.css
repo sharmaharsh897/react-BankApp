@@ -48,6 +48,9 @@ input{
   margin-top: 0.5rem;
   color:#292074
 }
+.btn-primary{
+  color:#ffffff
+}
 .heading1{
   text-align: left;
   font-size:18px;
