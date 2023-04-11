@@ -4,13 +4,12 @@ import SbiGif from "../images/sbi.gif";
 import "../styles/Home.css";
 import { FaUserAlt, FaUserPlus, FaArrowRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import Footer from "./Footer";
 
 const Home = () => {
   return (
     <>
       <Navbar />
-      <Footer />
+
       <div className="container">
         <div className="gif">
           <img src={SbiGif} alt="Logo" />
@@ -43,9 +42,19 @@ const Home = () => {
             </p>
           </div>
         </div>
+        <div className="moving-text-container">
+          <div className="moving-text">
+            <p>
+            Mandatory Profile password change after 365 days introduced for
+            added security. | Customers who have installed “SBI Secure OTP App”
+            on their mobile and completed registration process will now receive
+            Login OTP for OnlineSBI.com on the app instead of SMS OTP | Call us toll free on 1800 1234 and 1800
+            2100 and get a wide range of services through SBI Contact Centre |
+            
+            </p>
+          </div>
+        </div>
       </div>
-
-      
     </>
   );
 };

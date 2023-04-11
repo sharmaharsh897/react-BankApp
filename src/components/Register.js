@@ -25,6 +25,12 @@ export const Register = (props) => {
     });
   };
 
+  //strong password validation
+  const validatePassword=(password)=>{
+    const passwordRegex= /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    return passwordRegex.test(password);
+  }
+
   const validateFormInput = (event) => {
     event.preventDefault();
     let inputError = {
@@ -55,6 +61,13 @@ export const Register = (props) => {
       setFormError({
         ...inputError,
         password: alert("Password should not be empty"),
+      });
+      return;
+    }
+    if (!validatePassword(formInput.password)){
+      setFormError({
+        ...inputError,
+        password:alert("Password should contain at least one uppercase, one lowercase, one digit and one special character and should be alteast 8 characters long"),
       });
       return;
     }
