@@ -81,9 +81,9 @@ export const Login = (props) => {
               id="password"
               name="password"
             />
-            <button className="password-toggle" onClick={handleShow}>
+            <i className="password-toggle" onClick={handleShow}>
               {icon}
-            </button>
+            </i>
           </div>
           <p>{formErrors.password}</p>
 

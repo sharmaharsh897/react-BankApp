@@ -33,8 +33,8 @@ export const Register = (props) => {
     return passwordRegex.test(password);
   };
 
-  let isFormValid = false;
-
+  let isFormValid = true;
+//////////////
   const sendDataToBackend = async () => {
     try {
       if (isFormValid) {
@@ -48,7 +48,7 @@ export const Register = (props) => {
       console.log(error);
     }
   };
-
+////////////////
   const validateFormInput = (event) => {
     event.preventDefault();
     let inputError = {
@@ -192,9 +192,9 @@ export const Register = (props) => {
               name="password"
               onKeyDown={handleKeyDown}
             />
-            <button className="password-toggle" onClick={handleShow}>
+            <i className="password-toggle" onClick={handleShow}>
               {icon}
-            </button>
+            </i>
           </div>
           <p className="error-message">{formError.password}</p>
 
